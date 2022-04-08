@@ -43,12 +43,18 @@ const App = () => {
           text="Bad"
         />
       </div>
-      <Statistics text="Good" rate={good} />
-      <Statistics text="Neutral" rate={neutral} />
-      <Statistics text="Bad" rate={bad} />
-      <Statistics text="Total" rate={total} />
-      <p>Average: {(good - bad) / total}</p>
-      <p>Positive: {(good / total) * 100}%</p>
+      {total === 0 ? (
+        <span>Not feedback given</span>
+      ) : (
+        <>
+          <Statistics text="Good" rate={good} />
+          <Statistics text="Neutral" rate={neutral} />
+          <Statistics text="Bad" rate={bad} />
+          <Statistics text="Total" rate={total} />
+          <p>Average: {(good - bad) / total}</p>
+          <p>Positive: {(good / total) * 100}%</p>
+        </>
+      )}
     </>
   );
 };
