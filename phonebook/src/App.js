@@ -10,11 +10,20 @@ const App = () => {
 
   const addNumber = (event) => {
     event.preventDefault();
+    if (alreadyAdded(newName)) {
+      alert(`${newName} already added to phone list`);
+      setNewName("");
+      return;
+    }
     const obj = {
       name: newName,
     };
     setPersons(persons.concat(obj));
     setNewName("");
+  };
+
+  const alreadyAdded = (name) => {
+    return persons.some((person) => person.name === name);
   };
 
   return (
